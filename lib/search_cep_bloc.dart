@@ -22,7 +22,7 @@ class SearchCepBloc {
    return CepModel.fromJson(response.data);
   }
    else{
-     throw Exception('Cep inválido');
+     throw Exception('Aguardando a informação completa');
    }
   }
 }
