@@ -6,9 +6,9 @@ A test project and functionality developemnt.
 ## Getting Started
 ##Descrição/Description
 
-<p float="left">
-    <img width="100" height="625" src="assets/images/img_form_screen_2.png">
-    <img width="100" height="625" src="assets/images/img_form_screen.png">
+<p align="space-">
+    <img width="200" height="625" src="assets/images/img_form_screen_2.png">
+    <img width="200" height="625" src="assets/images/img_form_screen.png">
 </p>
 
 ##Desenvolvimento/Development
