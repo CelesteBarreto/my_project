@@ -11,14 +11,14 @@ A test project and functionality developemnt.
     <img width="350" height="625" src="assets/images/img_form_screen.png">
 </p>
 
-##Desenvolvimento/Development
+## Desenvolvimento/Development
 - [x] Tela de Busca / Search Screen
 - [x] Requisição de API externa / API request using an external reference
 - [x] Gerência de estado com o Bloc puro / State management using Bloc
 - [x] Salvar dados no Firebase / Save data in a Cloud Database
 
 
-##Aprendizado
+## Aprendizado
 - StreamController como um recebedor de dados sendo ele também disposado ao fim do seu uso.
 - Dispose dos controllers e do bloc no dispose da HomePage
 - Salvar dados no banco em nuvem
@@ -28,7 +28,7 @@ A test project and functionality developemnt.
 
 <br>
 
-##Próximos Passos
+## Próximos Passos
 - Shared Preferences para salvar dados do cadastro no formulário / Shared Preferences to save form data 
 - Tela de Login / Login Screen
 - Autenticação / Autentication
