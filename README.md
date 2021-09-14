@@ -1,10 +1,9 @@
 # my_project
 
+## Descrição/Description
 Um projeto de teste e desenvolvimento de funcionalidades. 
 A test project and functionality developemnt.
 
-## Getting Started
-##Descrição/Description
 
 <p align="center">
     <img width="350" height="625" src="assets/images/img_form_screen_2.png">
