@@ -62,7 +62,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 ruaController.text = cepModel.logradouro ?? 'Bairro inexistente';
                 return Column(
                   children: [
-                    Text(cepModel.logradouro ?? 'sem logradouro'),
+                    SizedBox(
+                      height: 20,
+                    ),
                     TextFormField(
                       onSaved: (value) => nameController.text = value.toString(),
                       controller: nameController,
