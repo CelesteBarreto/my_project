@@ -4,17 +4,16 @@ Um projeto de teste e desenvolvimento de funcionalidades.
 A test project and functionality developemnt.
 
 ## Getting Started
-##Descrição
-##Description
+##Descrição/Description
 
-<p align="center">
+<p float="left">
     <img width="100" height="625" src="assets/images/img_form_screen_2.png">
     <img width="100" height="625" src="assets/images/img_form_screen.png">
 </p>
 
 ##Desenvolvimento/Development
 - [x] Tela de Busca / Search Screen
-= [x] Requisição de API externa / API request using an external reference
+- [x] Requisição de API externa / API request using an external reference
 - [x] Gerência de estado com o Bloc puro / State management using Bloc
 - [x] Salvar dados no Firebase / Save data in a Cloud Database
 
@@ -27,6 +26,7 @@ A test project and functionality developemnt.
 - Uso da StreamBuilder
 - Importância dos controllers na StreamBuilder como forma de mostrar os valores nos campos
 
+<br>
 
 ##Próximos Passos
 - Shared Preferences para salvar dados do cadastro no formulário / Shared Preferences to save form data 
