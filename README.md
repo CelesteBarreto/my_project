@@ -15,6 +15,7 @@ A test project and functionality developemnt.
 - [x] Requisição de API externa / API request using an external reference
 - [x] Gerência de estado com o Bloc puro / State management using Bloc
 - [x] Salvar dados no Firebase / Save data in a Cloud Database
+- [x] Salvar, retornar e deletar dados no Shared Preferences / Save, get data and remove data from SharedPreferences
 
 
 ## Aprendizado
@@ -24,11 +25,13 @@ A test project and functionality developemnt.
 - Gerenciar a reatividade/estados através do bloc e gerenciar a entrada e saída de dados por meio do input, output e StreamController.
 - Uso da StreamBuilder
 - Importância dos controllers na StreamBuilder como forma de mostrar os valores nos campos
+- O Shared Preferences sobrescreve os dados a serem salvos localmente. O Shared Preferences faz referencias aos dados por meio de chave e valor. Usar métodos como getKeys para retornar todasd as keys; prefs.remove() para remover uma key específica e os dados nela contidos.
+
 
 <br>
 
 ## Próximos Passos
-- Shared Preferences para salvar dados do cadastro no formulário / Shared Preferences to save form data 
+- Shared Preferences para salvar, retornar e deletar dados do cadastro no formulário / Shared Preferences to save, get and remove form data  - ok
 - Tela de Login / Login Screen
 - Autenticação / Autentication
 - Refatoração de código / Code Refactoring
