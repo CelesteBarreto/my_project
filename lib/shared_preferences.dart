@@ -11,7 +11,7 @@ class SharedPreferencesClass {
   Future<dynamic> getValues(String key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.getKeys();
-    final data = await prefs.getString(key);
+    final data = /* await */ prefs.getString(key);
     return jsonDecode(data ?? '{}');
   }
 

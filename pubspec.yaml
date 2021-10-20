@@ -33,8 +33,11 @@ dependencies:
   cloud_firestore: ^2.5.1
   firebase_core: ^1.6.0
   shared_preferences: ^2.0.7
+  
 
 dev_dependencies:
+  mockito: ^5.0.16
+  build_runner: ^2.1.4
   flutter_test:
     sdk: flutter
 

@@ -16,6 +16,7 @@ A test project and functionality developemnt.
 - [x] Gerência de estado com o Bloc puro / State management using Bloc
 - [x] Salvar dados no Firebase / Save data in a Cloud Database
 - [x] Salvar, retornar e deletar dados no Shared Preferences / Save, get data and remove data from SharedPreferences
+- [x] Teste do Dio usando mockito / Test using Mockito 
 
 
 ## Aprendizado
@@ -28,10 +29,12 @@ A test project and functionality developemnt.
 - O Shared Preferences sobrescreve os dados a serem salvos localmente. O Shared Preferences faz referencias aos dados por meio de chave e valor. Usar métodos como getKeys para retornar todasd as keys; prefs.remove() para remover uma key específica e os dados nela contidos.
 
 
+Obs: para gerar a classe mock deve-se digitar o comando dart run build_runner build
+Caso informe um erro de pubspec.yaml não encontrado, o comando dart pub get resolve.
+
 <br>
 
 ## Próximos Passos
-- Shared Preferences para salvar, retornar e deletar dados do cadastro no formulário / Shared Preferences to save, get and remove form data  - ok
 - Tela de Login / Login Screen
 - Autenticação / Autentication
 - Refatoração de código / Code Refactoring
