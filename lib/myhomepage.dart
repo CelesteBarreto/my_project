@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/bd/firebase/firebase.dart';
+import 'package:my_project/login_page.dart';
 import 'package:my_project/model/cep_model.dart';
 import 'package:my_project/search_cep_bloc.dart';
 import 'package:my_project/shared_preferences.dart';
@@ -12,7 +13,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
   String? streetText;
   FirebaseClass firebase = FirebaseClass();
   SearchCepBloc blocCEP = SearchCepBloc();
@@ -20,6 +21,8 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController streetController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController cepController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController senhaController = TextEditingController();
   SharedPreferencesClass shared = SharedPreferencesClass();
 
   @override
@@ -29,7 +32,6 @@ class _MyHomePageState extends State<MyHomePage> {
       //var cep = await shared.getValues('cep');
       var user = await shared.getValues('user');
 
-      //
       nameController.text = user['nome'] ?? '';
       districtController.text = user['district'] ?? '';
       streetController.text = user['street'] ?? '';
@@ -51,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Bloc"),
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.create))],
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(8.0),
@@ -67,28 +70,35 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 20,
             ),
             StreamBuilder<CepModel>(
-                stream: blocCEP.output,
-                builder: (context, snapshot) {
-                  /* if (snapshot.connectionState == ConnectionState.waiting) {
+              stream: blocCEP.output,
+              builder: (context, snapshot) {
+                /* if (snapshot.connectionState == ConnectionState.waiting) {
                     return Center(child: CircularProgressIndicator());
                   } */
-                  if (snapshot.hasError && snapshot.error is Exception) {
-                    return Text(snapshot.error.toString());
-                  } else if (snapshot.hasError) {
-                    return Text('Erro feio');
-                  }
-                  CepModel? cepModel =
-                      snapshot.data; //? pode ser nulo. ! não pode ser nulo
-                  districtController.text =
-                      cepModel?.bairro ?? 'logradouro inexistente';
-                  streetController.text =
-                      cepModel?.logradouro ?? 'Bairro inexistente';
-                  return Column(
+                if (snapshot.hasError && snapshot.error is Exception) {
+                  return Text(snapshot.error.toString());
+                } else if (snapshot.hasError) {
+                  return Text('Erro feio');
+                }
+                CepModel? cepModel =
+                    snapshot.data; //? pode ser nulo. ! não pode ser nulo
+                districtController.text =
+                    cepModel?.bairro ?? 'logradouro inexistente';
+                streetController.text =
+                    cepModel?.logradouro ?? 'Bairro inexistente';
+                return Form(
+                  key: formKey,
+                  child: Column(
                     children: [
                       SizedBox(
                         height: 20,
                       ),
                       TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty || value.length < 2)
+                            return 'Preencha o campo corretamente';
+                          return null;
+                        },
                         controller: nameController,
                         decoration: InputDecoration(
                             labelText: 'Nome',
@@ -100,9 +110,39 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       TextFormField(
                         validator: (value) {
-                          if (value!.isNotEmpty && value.length < 20)
-                            return null;
-                          return 'Campo inválido';
+                          if (value!.isEmpty || value.length < 2)
+                            return 'Preencha o campo corretamente';
+                          return null;
+                        },
+                        controller: emailController,
+                        decoration: InputDecoration(
+                            labelText: 'Email',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5))),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty || value.length < 2)
+                            return 'Preencha o campo corretamente';
+                          return null;
+                        },
+                        controller: senhaController,
+                        decoration: InputDecoration(
+                            labelText: 'senha',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5))),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty || value.length < 10)
+                            return 'Campo inválido';
+                          return null;
                         },
                         controller: streetController,
                         decoration: InputDecoration(
@@ -115,9 +155,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       TextFormField(
                         validator: (value) {
-                          if (value!.isNotEmpty && value.length < 20)
-                            return null;
-                          return 'Campo inválido';
+                          if (value!.isEmpty || value.length < 10)
+                            return 'Campo inválido';
+                          return null;
                         },
                         controller: districtController,
                         decoration: InputDecoration(
@@ -132,24 +172,34 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: 200,
                         child: ElevatedButton(
                             onPressed: () async {
-                              Map user = {
-                                'nome': nameController.text,
-                                'district': districtController.text,
-                                'street': streetController.text,
-                                'cep': cepController.text
-                              };
+                              if (formKey.currentState!.validate()) {
+                                Map user = {
+                                  'nome': nameController.text,
+                                  'district': districtController.text,
+                                  'street': streetController.text,
+                                  'cep': cepController.text
+                                };
 
-                              await shared.saveData('user', user);
+                                await shared.saveData('user', user);
 
-                              firebase.addUser(
-                                  nameController.text,
-                                  districtController.text,
-                                  streetController.text,
-                                  cepController.text);
+                                firebase.addUser(
+                                    nameController.text,
+                                    districtController.text,
+                                    streetController.text,
+                                    cepController.text);
+
+                                /* ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text('Processing data'))); */
+                                Future.delayed(Duration(milliseconds: 2));
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => LoginPage()));
+                              }
                             },
                             child: Text('Salvar')),
                       ),
                       Container(
+                        width: 200,
                         child: ElevatedButton(
                             onPressed: () async {
                               var user = await shared.getValues('user');
@@ -158,8 +208,10 @@ class _MyHomePageState extends State<MyHomePage> {
                             child: Text('Delete User')),
                       )
                     ],
-                  );
-                })
+                  ),
+                );
+              },
+            )
           ],
         ),
       ),

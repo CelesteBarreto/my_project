@@ -17,6 +17,8 @@ A test project and functionality developemnt.
 - [x] Salvar dados no Firebase / Save data in a Cloud Database
 - [x] Salvar, retornar e deletar dados no Shared Preferences / Save, get data and remove data from SharedPreferences
 - [x] Teste do Dio usando mockito / Test using Mockito 
+- [x] Validação no formulário com Form()
+- [x] Tela de login criada
 
 
 ## Aprendizado
@@ -27,16 +29,16 @@ A test project and functionality developemnt.
 - Uso da StreamBuilder
 - Importância dos controllers na StreamBuilder como forma de mostrar os valores nos campos
 - O Shared Preferences sobrescreve os dados a serem salvos localmente. O Shared Preferences faz referencias aos dados por meio de chave e valor. Usar métodos como getKeys para retornar todasd as keys; prefs.remove() para remover uma key específica e os dados nela contidos.
+- Sempre que tiver uma validação no formulário deve-se usar o Form(key: ), dessa forma dar um match na globalKey chamada no keyName.currentState!.validate() no onPressed().
 
 
-Obs: para gerar a classe mock deve-se digitar o comando dart run build_runner build
+Obs: para gerar a classe mock para o teste com mockito deve-se digitar o comando dart run build_runner build
 Caso informe um erro de pubspec.yaml não encontrado, o comando dart pub get resolve.
 
 <br>
 
 ## Próximos Passos
-- Tela de Login / Login Screen
-- Autenticação / Autentication
+- Autenticação / Autentication com Firebase
 - Refatoração de código / Code Refactoring
 
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)

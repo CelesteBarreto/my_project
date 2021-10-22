@@ -1,10 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:my_project/login_page.dart';
 import 'package:my_project/myhomepage.dart';
 
-void main() async  {
-   WidgetsFlutterBinding.ensureInitialized();
-    await Firebase.initializeApp();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -16,8 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(/* title: 'Flutter Demo Home Page' */),
+      home: LoginPage(/* title: 'Flutter Demo Home Page' */),
     );
   }
 }
-
